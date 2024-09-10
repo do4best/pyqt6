@@ -1,10 +1,10 @@
 from tkinter import *
-
+from tkinter import  messagebox
 class Calculator:
     def __init__(self,master):
-        master.title("De Arham Calculator")
-        master.geometry("357x420+0+0")
-        master.config(bg='gray')
+        master.title("De Arham Calculator") #this is title
+        master.geometry("357x420+0+0")  # set Size
+        master.config(bg='black')      # bg color
         master.resizable(False,False)
 
         self.equation = StringVar()
@@ -50,8 +50,11 @@ class Calculator:
         self.equation.set(self.entry_value)
 
     def solve(self):
-        result = eval(self.entry_value)
-        self.equation.set(result)
+        try:
+            result = eval(self.entry_value)
+            self.equation.set(result)
+        except:
+            messagebox.showinfo("Error","Please Enter only Digits. You cannot sum up two symbols")
 
 
 if __name__ == "__main__":
